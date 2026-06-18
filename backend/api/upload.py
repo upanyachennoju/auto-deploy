@@ -1,36 +1,42 @@
 import os
 from typing import List
-from fastapi import FastAPI, File, UploadFile, HTTPException
+from pathlib import Path
+from fastapi import FastAPI, File, UploadFile, HTTPException, status
 
-app = FastAPI()
+router = APIRouter()
 
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 ALLOWED_EXTENSIONS = {".csv", ".xlsx"}
-
-#also add a max file limit
+MAX_FILE_SIZE = 50 * 1024 * 1024  # 50 MB
 
 @app.post("/upload-single/", status_code=status.HTTP_201_CREATED)
 async def upload_single_file(file: UploadFile = File(...)):
     """
     Accepts a single file, validates size/extension, and saves it locally.
     """
-    # 1. Validate File Extension
-    _, ext = os.path.splitext(file.filename)
+    # Validate File Extension
+    _, ext = Path(file.filename).name
     if ext.lower() not in ALLOWED_EXTENSIONS:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"Extension {ext} not allowed. Choose from: {', '.join(ALLOWED_EXTENSIONS)}"
         )
     
-    # 2. Save the file to disk in chunks to optimize memory
-    file_path = os.path.join(UPLOAD_DIR, file.filename)
+    # Save the file to disk
+    file_path = Path(file.filename).name
+    contents = await file.read()
+
+    if len(contents) > MAX_FILE_SIZE:
+        raise HTTPException(
+            status_code=413,
+            detail="File too large"
+        )
 
     return {
         "filename": file.filename,
         "content_type": file.content_type,
-        "size_bytes": file_size,
         "message": "File uploaded successfully."
     }
 
@@ -41,11 +47,10 @@ async def upload_multiple_files(files: List[UploadFile] = File(...)):
     """
     uploaded_filenames = []
     for file in files:
-        file_path = os.path.join(UPLOAD_DIR, file.filename)
+        file_path = Path(file.filename).name
         try:
-            contents = await file.read()
             with open(file_path, "wb") as buffer:
-                buffer.write(contents)
+                shutil.copyfileobj(file.file, buffer)
             uploaded_filenames.append(file.filename)
         finally:
             await file.close()
