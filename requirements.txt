@@ -4,3 +4,4 @@ pandas
 python-multipart 
 langgraph
 langchain
+flaml
