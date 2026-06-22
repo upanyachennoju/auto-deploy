@@ -5,7 +5,7 @@ from sklearn.metrics import (
     f1_score
 )
 
-def evaluate_classification(model, X_test, y_test):
+def evaluate_model(model, X_test, y_test):
      
     predictions = model.predict(X_test)
 

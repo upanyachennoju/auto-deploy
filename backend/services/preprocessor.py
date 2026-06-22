@@ -16,6 +16,7 @@ def preprocess_dataset(file_path: Path, target_column: str) -> Tuple[pd.DataFram
     Returns:
         Tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]: A tuple containing the training and testing sets.
     """
+    file_path = Path(file_path)
     if file_path.suffix.lower() == ".csv":
         df = pd.read_csv(file_path)
     elif file_path.suffix.lower() == ".xlsx":

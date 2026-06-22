@@ -1,10 +1,12 @@
 from pathlib import Path
+from typing import Dict, Any
+import pandas as pd
 
 def analyse_dataset(file_path: Path)-> Dict[str, Any]:
     """
     Returns a descriptive JSON report of the dataset
     """
-    
+    file_path = Path(file_path)
     if file_path.suffix.lower() == ".csv":
         df = pd.read_csv(file_path)
     elif file_path.suffix.lower() == ".xlsx":

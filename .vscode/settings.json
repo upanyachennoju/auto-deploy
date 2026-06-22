@@ -1,0 +1,6 @@
+{
+    "python.defaultInterpreterPath": "/Users/upanyachennoju/miniconda3/envs/ai-env/bin/python",
+    "python.pythonPath": "/Users/upanyachennoju/miniconda3/envs/ai-env/bin/python",
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.defaultPackageManager": "ms-python.python:conda"
+}

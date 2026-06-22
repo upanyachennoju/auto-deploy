@@ -9,7 +9,7 @@ def train_automl(X_train, y_train, task_type, time_budget=60):
         y_train=y_train,
         task=task_type,
         time_budget=time_budget,
-        verbose=0
+        verbose=0,
     )
 
     return {
@@ -18,4 +18,3 @@ def train_automl(X_train, y_train, task_type, time_budget=60):
         "best_config": automl.best_config,
         "best_loss": automl.best_loss
     }
-

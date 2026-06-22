@@ -5,3 +5,6 @@ python-multipart
 langgraph
 langchain
 flaml
+langchain-groq
+langchain-core
+shap
