@@ -12,10 +12,19 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 ALLOWED_EXTENSIONS = {".csv", ".xlsx"}
 MAX_FILE_SIZE = 50 * 1024 * 1024  # 50 MB
 
+from backend.storage.session_store import SessionStore
+
 @router.post("/upload-single/", status_code=status.HTTP_201_CREATED)
 async def upload_single_file(file: UploadFile = File(...)):
     """
-    Accepts a single file, validates size/extension, and saves it locally.
+    Accepts a single file, validates size/extension, saves it locally,
+    and initializes a new AutoML session with the file path.
+    
+    Args:
+        file (UploadFile): File to upload
+    
+    Returns:
+        Dict[str, Any]: Dictionary containing session ID, filename, content type, and message
     """
     # Validate File Extension
     ext = Path(file.filename).suffix
@@ -38,16 +47,28 @@ async def upload_single_file(file: UploadFile = File(...)):
     with open(file_path, "wb") as buffer:
         buffer.write(contents)
 
+    # Initialize a new session and save the file path
+    session_store = SessionStore()
+    session_id = session_store.create_session()
+    session_store.set(session_id, "file_path", file_path)
+
     return {
+        "session_id": session_id,
         "filename": file.filename,
         "content_type": file.content_type,
-        "message": "File uploaded successfully."
+        "message": "File uploaded successfully and session initialized."
     }
 
 @router.post("/upload-multiple/", status_code=status.HTTP_201_CREATED)
 async def upload_multiple_files(files: List[UploadFile] = File(...)):
     """
     Accepts multiple files simultaneously and lists their filenames.
+
+    Args:
+        files (List[UploadFile]): List of files to upload
+    
+    Returns:
+        Dict[str, List[str]]: Dictionary containing list of uploaded filenames
     """
     uploaded_filenames = []
     for file in files:

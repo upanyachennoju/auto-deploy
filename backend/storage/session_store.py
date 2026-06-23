@@ -38,8 +38,6 @@ class SessionStore:
             SessionStore.sessions[session_id] = {}
         SessionStore.sessions[session_id][key] = value
 
-    # Duplicate get_value removed – functionality provided above.
-
     def delete_session(self, session_id: str):
         """Delete a session if it exists."""
         SessionStore.sessions.pop(session_id, None)

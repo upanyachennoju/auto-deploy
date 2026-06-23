@@ -9,6 +9,13 @@ def train_model_tool(
 ):
     """
     Train the best machine learning model using Flaml AutoML.
+
+    Args:
+        session_id (str): Session ID
+        task_type (str): Task type (e.g., 'classification', 'regression')
+
+    Returns:
+        Dict[str, Any]: Dictionary containing training results.
     """
     session_store = SessionStore()
     X_train = session_store.get_value(

@@ -11,6 +11,13 @@ def explainability_tool(
 ):
     """
     Generate feature importance report.
+
+    Args:
+        session_id (str): Session ID
+        top_n (int, optional): Number of top features to return. Defaults to 10.
+
+    Returns:
+        Dict[str, float]: Dictionary of top N most important features.
     """
     session_store = SessionStore()
     training_results = session_store.get_value(

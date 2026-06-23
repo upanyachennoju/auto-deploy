@@ -5,6 +5,16 @@ from typing import Dict, Any
 from flaml import AutoML
 
 def _resolve_model_and_features(model, X_sample: pd.DataFrame):
+    '''
+    Resolves the model and features for SHAP explanation.
+    
+    Args:
+        model: Trained model
+        X_sample (pd.DataFrame): Sample dataset
+    
+    Returns:
+        Tuple[Any, pd.DataFrame]: Resolved model and features
+    '''
     if isinstance(model, AutoML):
         if hasattr(model, "feature_transformer") and model.feature_transformer is not None:
             try:
@@ -84,6 +94,14 @@ def get_top_features(
 ):
     """
     Return top N most important features.
+
+    Args:
+        model: Trained model
+        feature_names: List of feature names
+        top_n (int, optional): Number of top features to return. Defaults to 10.
+
+    Returns:
+        Dict[str, float]: Dictionary of top N most important features.
     """
     importance_dict = get_feature_importance(
         model,
@@ -101,6 +119,13 @@ def generate_shap_explanation(
 ):
     """
     Generate SHAP values for a sample dataset.
+
+    Args:
+        model: Trained model
+        X_sample (pd.DataFrame): Sample dataset
+
+    Returns:
+        Dict[str, Any]: Dictionary containing SHAP values.
     """
     underlying_model, X_transformed = _resolve_model_and_features(model, X_sample)
     
@@ -139,6 +164,16 @@ def get_shap_feature_importance(
     model,
     X_sample: pd.DataFrame
 ):
+    """
+    Get SHAP feature importance.
+    
+    Args:
+        model: Trained model
+        X_sample (pd.DataFrame): Sample dataset
+    
+    Returns:
+        Dict[str, float]: Dictionary of SHAP feature importances.
+    """
     underlying_model, X_transformed = _resolve_model_and_features(model, X_sample)
     
     explanation = generate_shap_explanation(model, X_sample)

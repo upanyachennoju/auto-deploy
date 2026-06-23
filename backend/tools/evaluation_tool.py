@@ -11,6 +11,13 @@ def evaluate_model_tool(
 ):
     """
     Evaluate the trained model.
+
+    Args:
+        session_id (str): Session ID
+        task_type (str): Task type (e.g., 'classification', 'regression')
+
+    Returns:
+        Dict[str, Any]: Dictionary containing evaluation results.
     """
     session_store = SessionStore()
     training_results = session_store.get_value(

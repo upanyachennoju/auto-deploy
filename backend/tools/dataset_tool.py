@@ -10,6 +10,12 @@ def analyze_dataset_tool(
 ):
     """
     Analyze uploaded dataset.
+
+    Args:
+        session_id (str): Session ID
+
+    Returns:
+        Dict[str, Any]: Dictionary containing dataset analysis results.
     """
 
     file_path = SessionStore().get_value(

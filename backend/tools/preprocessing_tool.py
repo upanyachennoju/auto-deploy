@@ -10,6 +10,13 @@ def preprocess_dataset_tool(
 ):
     """
     Preprocess the dataset using scikit-learn pipelines for classification. 
+
+    Args:
+        session_id (str): Session ID
+        target_column (str): Target column name
+
+    Returns:
+        Dict[str, str]: Dictionary with status "preprocessing completed"
     """
     session_store = SessionStore()
     file_path = session_store.get_value(
