@@ -17,9 +17,15 @@ def preprocess_dataset_tool(
         "file_path"
     )
 
-    X_train, X_test, y_train, y_test = preprocess_dataset(
+    X_train, X_test, y_train, y_test, preprocessor = preprocess_dataset(
         file_path=file_path,
         target_column=target_column
+    )
+
+    session_store.set(
+        session_id,
+        "preprocessor",
+        preprocessor
     )
 
     session_store.set(

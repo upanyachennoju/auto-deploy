@@ -34,6 +34,7 @@ def evaluate_model_tool(
         model,
         X_test,
         y_test,
+        task_type
     )
 
     session_store.set(

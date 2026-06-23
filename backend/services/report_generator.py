@@ -9,6 +9,15 @@ def generate_report(
 ) -> Dict[str, Any]:
     """
     Generate a unified report from all pipeline stages.
+
+    Args:
+        dataset_analysis (Dict[str, Any]): Dictionary containing dataset analysis results.
+        training_results (Dict[str, Any]): Dictionary containing training results.
+        evaluation_results (Dict[str, Any]): Dictionary containing evaluation results.
+        feature_importance (Dict[str, float]): Dictionary containing feature importance results.
+
+    Returns:
+        Dict[str, Any]: A dictionary containing the unified report.
     """
 
     report = {
