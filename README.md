@@ -1,2 +1,2 @@
 # auto-deploy
-AI-powered end-to-end MLOps platform for automated data preprocessing, model training, evaluation, experiment tracking, deployment, and monitoring.
+AI-powered agentic AutoML platform that autonomously analyzes datasets, performs preprocessing, trains and evaluates machine learning models, and generates explainable insights through a LangChain-based workflow. The system uses FastAPI for the backend, Scikit-Learn for preprocessing and modeling, and incorporates modern AI orchestration techniques to provide an end-to-end AutoML experience.
