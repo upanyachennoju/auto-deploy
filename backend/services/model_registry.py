@@ -21,6 +21,18 @@ def get_schema_path(model_id: str) -> Path:
 def get_metadata_path(model_id: str) -> Path:
     return get_model_dir(model_id) / "metadata.json"
 
+def get_dataset_summary_path(model_id: str) -> Path:
+    return get_model_dir(model_id) / "dataset_summary.json"
+
+def get_feature_importance_path(model_id: str) -> Path:
+    return get_model_dir(model_id) / "feature_importance.json"
+
+def get_model_summary_path(model_id: str) -> Path:
+    return get_model_dir(model_id) / "model_summary.json"
+
+def get_ai_report_path(model_id: str) -> Path:
+    return get_model_dir(model_id) / "report.json"
+
 
 def save_model(model: Any, path: str):
     """

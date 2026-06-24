@@ -1,0 +1,12 @@
+{
+  "num__Day Charge": 0.18462507153324229,
+  "num__CustServ Calls": 0.1166015613971027,
+  "num__Day Mins": 0.07377079395304652,
+  "cat__Int'l Plan_no": 0.0662214446220116,
+  "num__Eve Mins": 0.05839722812561218,
+  "num__Intl Calls": 0.0510039329659122,
+  "num__Eve Charge": 0.050746264919899704,
+  "num__Intl Charge": 0.044104330035991485,
+  "num__Intl Mins": 0.03581324621755795,
+  "cat__Int'l Plan_yes": 0.0324542296950938
+}

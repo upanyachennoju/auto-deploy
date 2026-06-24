@@ -1,0 +1,10 @@
+{
+  "best_estimator": "extra_tree",
+  "best_config": {
+    "n_estimators": 8,
+    "max_features": 0.4326170360731265,
+    "max_leaves": 155,
+    "criterion": "gini"
+  },
+  "best_loss": 0.028269363364743727
+}

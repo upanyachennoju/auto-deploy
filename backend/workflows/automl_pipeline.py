@@ -3,7 +3,12 @@ import datetime
 import json
 import os
 from backend.storage.session_store import SessionStore
-from backend.services.model_registry import get_metadata_path
+from backend.services.model_registry import (
+    get_metadata_path,
+    get_dataset_summary_path,
+    get_feature_importance_path,
+    get_model_summary_path
+)
 from backend.tools.dataset_tool import analyze_dataset_tool
 from backend.tools.preprocessing_tool import preprocess_dataset_tool
 from backend.tools.trainer_tool import train_model_tool
@@ -75,5 +80,21 @@ def run_pipeline(
     os.makedirs(meta_path.parent, exist_ok=True)
     with open(meta_path, "w") as f:
         json.dump(metadata, f, indent=2)
+
+    # Save dataset summary, feature importance, and model summary to disk
+    report = session_store.get_value(session_id, "report")
+    
+    dataset_summary_path = get_dataset_summary_path(model_id)
+    feature_importance_path = get_feature_importance_path(model_id)
+    model_summary_path = get_model_summary_path(model_id)
+    
+    with open(dataset_summary_path, "w") as f:
+        json.dump(report.get("dataset_summary", {}), f, indent=2)
+        
+    with open(feature_importance_path, "w") as f:
+        json.dump(report.get("feature_importance", {}), f, indent=2)
+        
+    with open(model_summary_path, "w") as f:
+        json.dump(report.get("model_summary", {}), f, indent=2)
 
     return model_id

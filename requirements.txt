@@ -8,3 +8,5 @@ flaml
 langchain-groq
 langchain-core
 shap
+sqlalchemy
+psycopg2-binary

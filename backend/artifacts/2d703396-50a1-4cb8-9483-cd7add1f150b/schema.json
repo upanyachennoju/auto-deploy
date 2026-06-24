@@ -1,0 +1,82 @@
+{
+  "State": {
+    "dtype": "str",
+    "is_numeric": false
+  },
+  "Account Length": {
+    "dtype": "int64",
+    "is_numeric": true
+  },
+  "Area Code": {
+    "dtype": "int64",
+    "is_numeric": true
+  },
+  "Phone": {
+    "dtype": "str",
+    "is_numeric": false
+  },
+  "Int'l Plan": {
+    "dtype": "str",
+    "is_numeric": false
+  },
+  "VMail Plan": {
+    "dtype": "str",
+    "is_numeric": false
+  },
+  "VMail Message": {
+    "dtype": "int64",
+    "is_numeric": true
+  },
+  "Day Mins": {
+    "dtype": "float64",
+    "is_numeric": true
+  },
+  "Day Calls": {
+    "dtype": "int64",
+    "is_numeric": true
+  },
+  "Day Charge": {
+    "dtype": "float64",
+    "is_numeric": true
+  },
+  "Eve Mins": {
+    "dtype": "float64",
+    "is_numeric": true
+  },
+  "Eve Calls": {
+    "dtype": "int64",
+    "is_numeric": true
+  },
+  "Eve Charge": {
+    "dtype": "float64",
+    "is_numeric": true
+  },
+  "Night Mins": {
+    "dtype": "float64",
+    "is_numeric": true
+  },
+  "Night Calls": {
+    "dtype": "int64",
+    "is_numeric": true
+  },
+  "Night Charge": {
+    "dtype": "float64",
+    "is_numeric": true
+  },
+  "Intl Mins": {
+    "dtype": "float64",
+    "is_numeric": true
+  },
+  "Intl Calls": {
+    "dtype": "int64",
+    "is_numeric": true
+  },
+  "Intl Charge": {
+    "dtype": "float64",
+    "is_numeric": true
+  },
+  "CustServ Calls": {
+    "dtype": "int64",
+    "is_numeric": true
+  }
+}
