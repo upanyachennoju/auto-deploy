@@ -1,0 +1,14 @@
+{
+  "num__Age": {
+    "dtype": "float64",
+    "is_numeric": true
+  },
+  "num__CustServ_Calls": {
+    "dtype": "float64",
+    "is_numeric": true
+  },
+  "num__Day_Mins": {
+    "dtype": "float64",
+    "is_numeric": true
+  }
+}

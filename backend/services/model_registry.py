@@ -1,6 +1,26 @@
 import os
 import joblib
 from typing import Any
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+ARTIFACTS_DIR = BASE_DIR / "artifacts"
+
+def get_model_dir(model_id: str) -> Path:
+    return ARTIFACTS_DIR / model_id
+
+def get_model_path(model_id: str) -> Path:
+    return get_model_dir(model_id) / "model.pkl"
+
+def get_preprocessor_path(model_id: str) -> Path:
+    return get_model_dir(model_id) / "preprocessor.pkl"
+
+def get_schema_path(model_id: str) -> Path:
+    return get_model_dir(model_id) / "schema.json"
+
+def get_metadata_path(model_id: str) -> Path:
+    return get_model_dir(model_id) / "metadata.json"
+
 
 def save_model(model: Any, path: str):
     """
